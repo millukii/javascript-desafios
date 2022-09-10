@@ -7,32 +7,65 @@
 
 <body>
 
-  <script src="assets/js/form.js"></script>
+  <section>
+    <div>
+      <h3>Contacto</h3>
+      <form id="contactForm">
+        <label for="caja-texto-nombre">Nombre Completo</label>
+        <input type="text" name="nombre" id="caja-texto-nombre" placeholder="Nombre" required>
+
+        <label for="caja-texto-email">Correo electronico</label>
+        <input type="email" name="email" id="caja-texto-email" placeholder="Correo Electronico" required>
+
+        <label for="caja-texto-telefono">Teléfono</label>
+        <input type="text" name="telefono" id="caja-texto-telefono" placeholder="Numero de telefono" required>
+
+        <label for="caja-texto-comentario">Comentario</label>
+        <input type="text" name="comentario" id="caja-texto-comentario" placeholder="Comentario" required>
+
+        <button type="submit" id="send-button">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+  </script>
+
   <script type="text/javascript">
 
-    /*otros lenguajes requieren declarar el tipo de dato del valor que se va a almacenar  Integer nombrevariable = 1;*/
+    /*Definir variables nombre, telefono, email y comentario*/
+    /*Obtener los elementos html que contienen estos datos*/
 
-    /*javascript datos*/
-    /*valores globales son con variables var */
-    var nombrevariable1 = "1";
-    nombrevariable1 = 1;
+    $('#contactForm').on('submit', function (event) {
+      event.preventDefault(); // prevent reload
 
-    /*const se usa para datos que no van a cambiar*/
-    const pi = 3.14;
+      var cajaNombre = $('#caja-texto-nombre').val();
+      var cajaTelefono = $('#caja-texto-telefono').val();
+      var cajaEmail = $('#caja-texto-email').val();
+      var cajaComentario = $('#caja-texto-comentario').val();
 
-    /*let solo se puede usar dentro de su scope*/
-    function name(params) {
-      let nombrevariable2 = 1;
+      alert(cajaNombre, cajaTelefono, cajaEmail, cajaComentario);
 
+      var formData = new FormData(this);
+      formData.append('service_id', 'service_xa42f1q');
+      formData.append('template_id', 'template_hvkervc');
+      formData.append('user_id', 'W8wCKti6oi2hoY0_W');
 
-      function name2(params) {
+      $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+        type: 'POST',
+        data: formData,
+        contentType: false, // auto-detection
+        processData: false // no need to parse formData to string
+      }).done(function () {
+        alert('Your mail is sent!');
+      }).fail(function (error) {
+        alert('Oops... ' + JSON.stringify(error));
+      });
 
-      }
-
-    }
-
-    name2(params);
-    console.log(nombrevariable2);
+    });
   </script>
 </body>
 

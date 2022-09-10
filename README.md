@@ -32,7 +32,7 @@ Desafios para aprender javascript
 - Todos los campos deben ser llenados antes de enviar
 - El correo debe ser valido
 - El nombre debe tener al menos 3 caracteres
-- El numero de telefono debe tener al menos 8 numeros
+- El numero de telefono debe tener al menos 9 numeros
 - El campo de telefono no puede admitir letras u otros carácteres
 
 ### Envio de correo
@@ -43,3 +43,4 @@ Desafios para aprender javascript
 
 - https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Grammar_and_types
 - https://developer.mozilla.org/es/docs/Web/API/HTMLStyleElement
+- https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/
